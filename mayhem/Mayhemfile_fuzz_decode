@@ -1,0 +1,12 @@
+project: savantenvs/jiffy
+target: fuzz_decode
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/fuzz_decode/testsuite
+cmds:
+  - cmd: /mayhem/fuzz_decode
+    libfuzzer: true
+    timeout: 30
+    dictionary: /mayhem/mayhem/fuzz_decode/fuzz_decode.dict
+    env:
+      MFUZZ_COMPAT_LEVEL: '2'
